@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS relatorios (
 -- índices
 CREATE INDEX idx_funcionarios_nome ON funcionarios(nome);
 CREATE INDEX idx_cargos_nome ON cargos(nome);
+
 ```
 
 ---
