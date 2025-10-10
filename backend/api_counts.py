@@ -1,11 +1,11 @@
-# api_counts.py
+
 import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 import pymysql
 
 app = Flask(__name__)
-CORS(app)  # permite chamadas do seu front (localhost:8080)
+CORS(app)  #permite chamadas no front 
 
 # lê variáveis de ambiente para facilitar o uso em Docker ou local
 DB_HOST = os.environ.get('DB_HOST', 'db')       # padrão 'db' (quando Flask estiver em outro container)
@@ -46,3 +46,4 @@ def counts():
 if __name__ == '__main__':
     # roda acessível na rede (0.0.0.0) para uso com Docker ou para ser chamado de outro host
     app.run(host='0.0.0.0', port=5000, debug=True)
+
