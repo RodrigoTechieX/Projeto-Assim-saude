@@ -105,7 +105,7 @@ FLASK_ENV=development
 
 ---
 
-## 🧩 Exemplo de Estrutura do Banco de Dados
+## 🧩 Estrutura do Banco de Dados
 
 ```sql
 -- cria DB (se ainda não existir)
