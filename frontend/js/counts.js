@@ -1,6 +1,3 @@
-// frontend/js/counts.js
-// Atualiza os indicadores de contagem (polling a cada 5s)
-// Depende de API_URL definido em js/config.js
 
 const updateCounts = async () => {
   const elCargos = document.getElementById('count-cargos');
@@ -33,3 +30,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCounts();
   setInterval(updateCounts, 5000);
 });
+
