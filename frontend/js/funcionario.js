@@ -96,7 +96,7 @@ form.onsubmit = async (e) => {
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.erro || data.error || 'Erro ao salvar');
 
-    // Opcional: atualiza só a linha no DOM se foi edição
+    
     if (id) {
       const tr = tabelaBody.querySelector(`tr[data-id="${id}"]`);
       if (tr) {
@@ -110,7 +110,7 @@ form.onsubmit = async (e) => {
       }
     }
 
-    // Recarrega a tabela (fallback e para garantir sincronização)
+    // Recarrega a tabela 
     btnSearch.click();
 
     alert('Salvo com sucesso!');
