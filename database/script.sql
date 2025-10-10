@@ -35,12 +35,6 @@ CREATE TABLE IF NOT EXISTS relatorios (
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- exemplo inicial
-INSERT INTO relatorios (titulo, descricao)
-VALUES
-  ('Relatório de Teste', 'Relatório inicial para validação do contador');
-
-
 
 -- índices
 CREATE INDEX idx_funcionarios_nome ON funcionarios(nome);
