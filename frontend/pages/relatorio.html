@@ -6,13 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Caminho relativo para o CSS -->
   <link rel="stylesheet" href="../assets/css/styles.css"/>
- 
-  
   <title>Relatórios — Assim Saúde</title>
 </head>
 
 <body>
-  <!-- HEADER / NAV -->
+ 
   <header class="container header">
     <div class="brand">Assim Saúde <span class="sub">Sistema</span></div>
     <button id="nav-toggle" aria-label="Abrir menu">☰</button>
@@ -33,7 +31,7 @@
     <h1>Relatórios do Sistema</h1>
     <p>Visualize e filtre os dados de funcionários, cargos e salários.</p>
 
-    <!-- CARD DE FILTRO -->
+    <!-- FILTRO -->
     <section class="card">
       <h2>Filtros</h2>
       <div class="search-bar">
@@ -50,10 +48,9 @@
       <h2>Resultados</h2>
       <div class="table-wrapper card" style="padding: 0;">
         <table id="tabela_relatorio">
-          <!-- Depois -->
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Cargo</th>
@@ -61,7 +58,7 @@
                   </tr>
                 </thead>
           <tbody>
-            <!-- Linhas geradas dinamicamente -->
+            
           </tbody>
         </table>
       </div>
@@ -73,7 +70,6 @@
     <footer class="footer">© 2025 Assim Saúde — Sistema desenvolvido por Rodrigo Ferreira</footer>
   </main>
 
-     <!-- Caminhos relativos corrigidos -->
     <script src="../js/nav.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/relatorio.js"></script>
