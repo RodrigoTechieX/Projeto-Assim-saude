@@ -19,12 +19,11 @@ async function fetchFuncionarios(nome='', cargo=''){
 function renderRelatorio(funcs){
   tabelaBody.innerHTML = '';
 
-  // funcs é um array; indexa com 0..n-1 e mostra (index+1)
+ 
   funcs.forEach((f, idx) => {
     const tr = document.createElement('tr');
 
-    // Ajuste os nomes das propriedades se sua API usar nomes diferentes.
-    // Ex.: cargo_nome / cargo_salario / telefone / nome
+
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td>${f.nome || ''}</td>
@@ -35,7 +34,7 @@ function renderRelatorio(funcs){
     tabelaBody.appendChild(tr);
   });
 
-  // Comunica contagem localmente (útil para atualização imediata do badge na index)
+  
   try {
     localStorage.setItem('relatorios_count', String(funcs.length));
   } catch (e) {
