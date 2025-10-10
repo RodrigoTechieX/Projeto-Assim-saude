@@ -219,7 +219,8 @@ Exemplo de retorno esperado:
 ## 🧑‍💻 Autor
 
 **Rodrigo Ferreira da Silva Filho**  
-📧 [contato.rodrigo.tech@gmail.com]
+✉️ [contato.rodrigo.tech@gmail.com]
+🔗 [https://www.linkedin.com/in/rodrigo-ferreira-325527272/]
 📁 Projeto desenvolvido como parte da avaliação — Assim Saúde
 
 ---
