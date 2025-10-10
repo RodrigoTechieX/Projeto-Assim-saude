@@ -108,26 +108,45 @@ FLASK_ENV=development
 ## 🧩 Exemplo de Estrutura do Banco de Dados
 
 ```sql
-CREATE DATABASE IF NOT EXISTS assim_saude;
+-- cria DB (se ainda não existir)
+CREATE DATABASE IF NOT EXISTS assim_saude
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
 USE assim_saude;
 
-CREATE TABLE cargos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    descricao TEXT,
-    salario DECIMAL(10,2)
+-- cargos
+CREATE TABLE IF NOT EXISTS cargos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  salario DECIMAL(10,2) NOT NULL,
+  descricao TEXT,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE funcionarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
-    email VARCHAR(100),
-    cargo_id INT,
-    data_admissao DATE,
-    FOREIGN KEY (cargo_id) REFERENCES cargos(id)
+-- funcionarios
+CREATE TABLE IF NOT EXISTS funcionarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  data_nascimento DATE,
+  endereco TEXT,
+  cpf VARCHAR(14) NOT NULL UNIQUE,
+  email VARCHAR(255),
+  telefone VARCHAR(20),
+  cargo_id INT NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (cargo_id) REFERENCES cargos(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+-- relatorios
+CREATE TABLE IF NOT EXISTS relatorios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL,
+  descricao TEXT,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- índices
 CREATE INDEX idx_funcionarios_nome ON funcionarios(nome);
 CREATE INDEX idx_cargos_nome ON cargos(nome);
 ```
