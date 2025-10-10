@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: assim_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: assim_saude
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/script.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: assim_backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: assim_saude
+      DB_USER: root
+      DB_PASSWORD: root
+      FLASK_APP: app.py
+      FLASK_DEBUG: 1
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+        echo '⏳ Aguardando o MySQL iniciar...' &&
+        until nc -z db 3306; do
+          sleep 2;
+        done &&
+        echo '✅ MySQL pronto! Iniciando backend...' &&
+        gunicorn --bind 0.0.0.0:5000 app:app
+      "
+
+  frontend:
+    image: nginx:alpine
+    container_name: assim_frontend
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
