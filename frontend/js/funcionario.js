@@ -1,4 +1,4 @@
-// funcionario.js
+
 if(!window.API_URL){
   var el = document.createElement('script'); el.src = "../js/config.js"; document.head.appendChild(el);
 }
